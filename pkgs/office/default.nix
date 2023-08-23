@@ -8,11 +8,13 @@
     systemPackages = with pkgs; [
 
       # Office suite
-      wpsoffice     
+      wpsoffice
+      libreoffice-fresh
+      onlyoffice-bin
 
       # Desktop accessories
       deepin.deepin-calculator
-      
+
     ];
   };
 }

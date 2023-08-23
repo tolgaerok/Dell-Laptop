@@ -25,15 +25,12 @@ in {
     # ./usernames/root-user-config.nix
     #./custom-config { inherit config; }
     ./custom-pkgs
-    ./hardware-acceleration
     ./hardware-configuration
-    ./network
     ./nix
     ./pkgs
-    ./printer
-    ./scanner
-    ./screensaver
+    ./programs
     ./services
+    ./system
 
   ];
 
@@ -113,16 +110,17 @@ in {
   # X11 and KDE Plasma
   #---------------------------------------------------------------------
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.layout = "us";
-  services.xserver.xkbVariant = "";
+  services = {
+    xserver = {
+      desktopManager = { plasma5.enable = true; };
+      videoDrivers = [ "intel" ];
+      displayManager.sddm.enable = true;
+      displayManager.sddm.autoNumlock = true;
+      enable = true;
+      layout = "us";
+      xkbVariant = "";
+    };
+  };
 
   #---------------------------------------------------------------------
   # Audio
@@ -190,29 +188,6 @@ in {
   # Nvidia drivers - NixOS wiki and help from David Turcotte. 
   # (https://davidturcotte.com)
   #---------------------------------------------------------------------
-
-  hardware = {
-  #  nvidia = {
-  #    modesetting.enable = true;
-  #    nvidiaPersistenced = true;
-  #    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  #  };
-
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-        vaapiVdpau
-        libvdpau-va-gl
-        vulkan-validation-layers
-      ];
-    };
-  };
-
-  #services.xserver.videoDrivers = [ ''intel'' ];
 
 
   #---------------------------------------------------------------------

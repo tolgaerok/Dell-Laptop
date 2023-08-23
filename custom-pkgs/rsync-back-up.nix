@@ -10,15 +10,15 @@ let
         # Source and destination information
         DEST_DIR="/mnt/smb-rsync/"
         SERVER_IP="192.168.0.20"
-        SOURCE_DIR="$HOME/nixos"
+        SOURCE_DIR="/etc/nixos/"
 
         # Mount options
-        MOUNT_OPTIONS="credentials=$HOME/nixos/network/smb-secrets,uid=$USER,gid=samba,vers=3.1.1,cache=loose,file_mode=0777,dir_mode=0777"   
+        MOUNT_OPTIONS="credentials=/etc/nixos/hardware-configuration/network/smb-secrets,uid=$USER,gid=samba,vers=3.1.1,cache=loose,file_mode=0777,dir_mode=0777"   
 
         # Function to perform rsync
         perform_rsync() {
             # Mount smb share
-            sudo mount -t cifs //$SERVER_IP/ISO/ "$DEST_DIR" -o "$MOUNT_OPTIONS"
+            sudo mount -t cifs //$SERVER_IP/LINUXDATA2/ISO/RSYNC/ "$DEST_DIR" -o "$MOUNT_OPTIONS"
 
             # Rsync
             echo -e "\e[1;34mSyncing $SOURCE_DIR/ $DEST_DIR/ ..."

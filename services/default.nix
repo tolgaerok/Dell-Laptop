@@ -3,7 +3,11 @@
   imports = [
 
     # Configuration for  XDG Desktop Portal integration
-    ./xdg-portal.nix
+    ./fstrim
+    ./mysql
+    ./printer
+    ./scanner
+    ./xdg-portal
 
   ];
 }

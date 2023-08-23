@@ -10,8 +10,8 @@ let
     # Destination information
     DEST_DIR="/mnt/smb-rsync/"
     SERVER_IP="192.168.0.20"
-    MOUNT_OPTIONS="credentials=$HOME/nixos/network/smb-secrets,uid=$USER,gid=samba,vers=3.1.1,cache=loose,file_mode=0777,dir_mode=0777"
-    SOURCE_DIR="$HOME/nixos"
+    MOUNT_OPTIONS="credentials=/etc/nixos/hardware-configuration/network/smb-secrets,uid=$USER,gid=samba,vers=3.1.1,cache=loose,file_mode=0777,dir_mode=0777"
+    SOURCE_DIR="/etc/nixos/"
 
     # Function to unmount smb share
     perform_unmount() {
@@ -23,7 +23,7 @@ let
     perform_unmount
 
     # Mount smb share
-    sudo mount -t cifs //$SERVER_IP/ISO/ "$DEST_DIR" -o "$MOUNT_OPTIONS"
+    sudo mount -t cifs //$SERVER_IP/LINUXDATA2/ISO/COPY/ "$DEST_DIR" -o "$MOUNT_OPTIONS"
 
     # Check if mount was successful
     if [ $? -ne 0 ]; then

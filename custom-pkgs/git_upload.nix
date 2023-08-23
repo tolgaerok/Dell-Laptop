@@ -5,14 +5,21 @@ let
   gitup = pkgs.writeScriptBin "gitup" ''
     #!/bin/bash
 
-    # Personal nixos git folder uploader!
+    # Personal nixos git folder uploader!!
     # Tolga Erok. ¯\_(ツ)_/¯
-    # 20/8/23
+    # 20/8/23.
 
-    config_files= "$HOME/nixos/"
+    config_files="/etc/nixos"
+    work_tree="/etc/nixos"
 
     # Check if the remote URL is set to SSH
     remote_url=$(git remote get-url origin)
+
+    # Configure Git credential helper to cache credentials for 1 hour
+    git config --global credential.helper "cache --timeout=3600"
+
+    # Configure pull to always rebase
+    git config pull.rebase true
 
     # Add some tweaks
     git config --global core.compression 9
@@ -21,7 +28,7 @@ let
     git config --global http.postBuffer 524288000
 
     if [[ $remote_url == *"git@github.com"* ]]; then
-        echo "Remote URL is set to SSH. Proceeding with the script..."
+        echo "Remote URL is set to SSH. Proceeding with the script..." | ${pkgs.lolcat}/bin/lolcat
     else
         echo "Remote URL is not set to SSH. Please set up SSH key-based authentication for the remote repository."
         echo "If you haven't already, generate an SSH key pair:"
@@ -37,33 +44,34 @@ let
         exit 1
     fi
 
-    work_tree="$HOME/nixos"
-
     # Navigate to the working tree directory
     cd "$work_tree" || exit
 
     # Pull remote changes using merge
     git pull origin main --no-rebase
-    echo "Pulled remote changes using merge"
+    echo "(ツ)_/¯   Pulled remote changes using merge" | ${pkgs.lolcat}/bin/lolcat
 
+    # Add changes
     git add "$config_files"
 
     commit_time=$(date +"%I:%M %p") # 12-hour format
-    git commit -m "Update at $commit_time"
-    echo "Committed local changes"
+    git commit -m "(ツ)_/¯    Update @ $commit_time"
+    echo "(ツ)_/¯   Committed local changes" | ${pkgs.lolcat}/bin/lolcat
 
     # Commit changes from deletions
     git add --all
-    git commit -m "Edited commit @ $commit_time"
-    echo "Committed edits"
+    git commit -m "(ツ)_/¯  Edited commit @ $commit_time"
+    echo "(ツ)_/¯   Committed edits" | ${pkgs.lolcat}/bin/lolcat
 
     # Push changes to remote
     git push origin main
-    echo "Pushed changes to remote repository at $commit_time"
+    echo "(ツ)_/¯   Pushed changes to remote repository @ $commit_time" | ${pkgs.lolcat}/bin/lolcat
 
     # Display Global settings
-    git config --global --list      
-      # End of script
+    git config --global --list
+
+    # End of script
+
   '';
 
 in {

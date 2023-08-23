@@ -2,21 +2,21 @@
   # Compression:
   environment = {
     systemPackages = with pkgs; [
-      
+
       # Archive Utilities
-      rar
-      xz
-      zip
-      zstd
-      p7zip
-      rzip
+      atool
+      gzip
       lz4
       lzip
       lzo
       lzop
-      gzip
-      atool
+      p7zip
+      rar
+      rzip
       unzip
+      xz
+      zip
+      zstd
 
     ];
   };
