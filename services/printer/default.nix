@@ -33,7 +33,7 @@ in {
       "D! /tmp 1777 root root 0"
       "d /var/spool/samba 1777 root root -"
       "r! /tmp/**/*"
-#    ];
-#  };
+    ];
+  };
 
 }

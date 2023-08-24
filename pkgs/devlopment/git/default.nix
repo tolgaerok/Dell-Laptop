@@ -16,6 +16,7 @@
       gitlint
       glab
       hut
+      github-desktop
 
     ];
   };

@@ -38,9 +38,11 @@ in {
   # Bootloader and System Settings
   #---------------------------------------------------------------------
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.device = "/dev/sda";
+  # boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   #---------------------------------------------------------------------
   # SysRQ for is rebooting their machine properly if it freezes

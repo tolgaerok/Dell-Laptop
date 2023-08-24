@@ -40,7 +40,6 @@
     [ { device = "/dev/disk/by-uuid/71bb2615-3252-4757-a54b-e334ba86c751"; }
     ];
 
-  swapDevices = [ ];
 
   #---------------------------------------------------------------------
   # For AMD hardware / chipsets

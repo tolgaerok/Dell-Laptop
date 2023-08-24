@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 let
-  fullname = "Tolga Erok";
-  email = "kingtolga@gmail.com";
+  fullname = "Brian Francisco";
+  email = "dbf-linux@gmail.com";
 
 in {
   programs = {
