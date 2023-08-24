@@ -72,8 +72,8 @@
         lsla = "lsd -la";
 
         # fun stuff
-        icons = "sxiv -t /home/tolga/Pictures/icons";
-        wp = "sxiv -t /home/tolga/Pictures/Wallpapers";
+        icons = "sxiv -t /home/brianf/Pictures/icons";
+        wp = "sxiv -t /home/brianf/Pictures/Wallpapers";
 
         # file access
         cp = "cp -riv";

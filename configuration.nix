@@ -11,9 +11,7 @@
 
 { config, desktop, pkgs, lib, username, ... }:
 
-let 
-    
-in {
+{
 
   #---------------------------------------------------------------------
   # Import snippet files:- 
@@ -21,10 +19,6 @@ in {
 
   imports = [
 
-    # ./usernames/mutable-users-config.nix
-    # ./usernames/root-user-config.nix
-    #./custom-config { inherit config; }
-    ./custom-pkgs
     ./hardware-configuration
     ./nix
     ./pkgs
@@ -52,36 +46,6 @@ in {
   boot.kernel.sysctl."kernel.sysrq" = 1;
 
   #---------------------------------------------------------------------
-  # Provides a virtual file system for environment modules. Solution
-  # from NixOS forums to help shotwell to keep preference settings
-  #---------------------------------------------------------------------
-
-  services.envfs.enable = true;
-
-  #---------------------------------------------------------------------
-  # Dynamic device management. udev is responsible for device detection, 
-  # device node creation, and managing device events.
-  #---------------------------------------------------------------------
-
-  services.udev.enable = true;
-
-  #---------------------------------------------------------------------
-  # Automatically detect and manage storage devices connected to your 
-  # system. This includes handling device mounting and unmounting, 
-  # as well as providing a consistent interface for accessing USB and 
-  # managing disk-related operations.
-  #---------------------------------------------------------------------
-
-  services.devmon.enable = true;
-  services.udisks2.enable = true;
-
-  #---------------------------------------------------------------------
-  # Activate the automatic trimming process for SSDs on the NixOS system  
-  # Manual over-ride is sudo sudo fstrim / -v
-  #---------------------------------------------------------------------
-  services.fstrim.enable = true;
-
-  #---------------------------------------------------------------------
   # Kernel Configuration
   #---------------------------------------------------------------------
 
@@ -90,12 +54,9 @@ in {
   #---------------------------------------------------------------------
   # Time Zone and Locale
   #---------------------------------------------------------------------
-  # Set your time zone.
+
   time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -109,35 +70,20 @@ in {
   };
 
   #---------------------------------------------------------------------
-  # X11 and KDE Plasma
+  # Audio - Enable sound with pipewire.
   #---------------------------------------------------------------------
 
-  services = {
-    xserver = {
-      desktopManager = { plasma5.enable = true; };
-      videoDrivers = [ "intel" ];
-      displayManager.sddm.enable = true;
-      displayManager.sddm.autoNumlock = true;
-      enable = true;
-      layout = "us";
-      xkbVariant = "";
-    };
-  };
-
-  #---------------------------------------------------------------------
-  # Audio
-  #---------------------------------------------------------------------
-
-  # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  sound.enable = true;
+
   services.pipewire = {
-    enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+    jack.enable = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
+    wireplumber.enable = true;
+  # If you want to use JACK applications, uncomment this
   #  jack.enable = true;
   };
 
@@ -151,12 +97,18 @@ in {
     description = "Brian Francisco";
     uid = 1000;
     extraGroups = [
+      "adbusers"
       "audio"
+      "corectrl"
       "disk"
       "input"
       "lp"
+      "mongodb"
+      "mysql"
+      "network"
       "network"
       "networkmanager"
+      "postgres"
       "power"
       "scanner"
       "sound"
@@ -187,21 +139,14 @@ in {
   services.blueman.enable = true;
 
   #---------------------------------------------------------------------
-  # Nvidia drivers - NixOS wiki and help from David Turcotte. 
-  # (https://davidturcotte.com)
-  #---------------------------------------------------------------------
-
-
-  #---------------------------------------------------------------------
   # Automatic system upgrades, automatically reboot after an upgrade if
   # necessary
   #---------------------------------------------------------------------
 
   # system.autoUpgrade.allowReboot = true;  # Very annoying .
-
   system.autoUpgrade.enable = true;
   system.copySystemConfiguration = true;
   system.stateVersion = "23.05";
   systemd.extraConfig = "DefaultTimeoutStopSec=10s";
-  #systemd.user.startServices = ''sd-switch''
+
 }

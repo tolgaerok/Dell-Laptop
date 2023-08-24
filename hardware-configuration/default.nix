@@ -3,8 +3,8 @@
   imports = [
 
     # Configuration for  HardwaRE on current system
-    ./boot
+    ./fstab
     ./network
-    # ./nvidia-opengl
+    ./nvidia-opengl
   ];
 }

@@ -8,12 +8,6 @@ in {
 
   imports = [   
     
-    # ./custom-config
-    # ./samba/default.nix
-    # Configuration for bash and fish
-    # System condiguration
-    ./aliases/system-bash-aliases.nix
-    ./aliases/system-fish-aliases.nix
     ./dconf
   ];
 
