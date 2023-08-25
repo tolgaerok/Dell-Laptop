@@ -46,6 +46,7 @@
       tldr
       tree
       vim
+      nano
 
       # XDG Utilities
       xdg-launch

@@ -5,6 +5,8 @@
     systemPackages = with pkgs; [
       discord
       whatsapp-for-linux
+      element-desktop
+      telegram-desktop
     ];
   };
 }
