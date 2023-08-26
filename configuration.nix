@@ -1,12 +1,11 @@
-# MOTHERBOARD:  	Lenovo Motherboard 23926CU Win8 Pro DPK TPG
-# MODEL:        	Lenovo ThinkPad T530 23926CU
-# BIOS:         	Lenovo BIOS G4ETB7WW (2.77 ) 09/09/2019
-# CPU:          	Intel(R) Core i7-3520M CPU @ 2.90GHz
-# GPU:          	Intel 3rd Gen Core processor Graphics Controller
-# RAM:          	2x RAM Module 8GB SODIMM DDR3 1600MT/s
-# SATA:         	PNY CS900 1TB SSD
-# NETWORK:      	Intel Centrino Advanced-N 6205 [Taylor Peak]
-# BLUE-TOOTH:   	Broadcom BCM20702 Bluetooth 4.0 [ThinkPad]
+# MOTHERBOARD:	  Intel® Q87
+# MODEL:        	HP EliteDesk 800 G1 SFF
+# CPU:          	Intel(R) Core(TM) i7-4770 CPU @ 3.40GHz x 8 (Haswell)
+# GPU:          	NVIDIA GeForce GT 1030/PCIe/SSE2
+# RAM:          	28 GB DDR3
+# SATA:         	SAMSUNG SSD 870 EVO 500GB
+# NETWORK:       	Intel Corporation Wi-Fi 6 AX210/AX211/AX411 160MHz 
+# BLUE-TOOTH:   	REALTEK 5G
 #---------------------------------------------------------------------
 
 { config, desktop, pkgs, lib, username, ... }:
@@ -14,14 +13,17 @@
 {
 
   #---------------------------------------------------------------------
-  # Import snippet files:- 
+  # Import snippet files
   #---------------------------------------------------------------------
 
-  imports = [
+  imports = [         ###  ONLY UNCOMMENT THE ./hardware GPU YOU WANT  ###
 
-    ./hardware-configuration
+    # ./hardware/gpu/intel/intel-laptop/intel-acceleration.nix  # INTEL GPU with (Open-GL), tlp and auto-cpufreq     
+    # ./hardware/gpu/nvidia/nvidia-stable/nvidia-stable.nix     # NVIDIA stable for GT-710--
+    ./hardware-configuration.nix
+    ./hardware/gpu/nvidia/nvidia-opengl/nvidia-opengl.nix # NVIDIA with hardware acceleration (Open-GL) for GT-1030++
     ./nix
-    ./pkgs
+    ./packages
     ./programs
     ./services
     ./system
@@ -32,11 +34,9 @@
   # Bootloader and System Settings
   #---------------------------------------------------------------------
 
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.device = "/dev/sda";
-  # boot.loader.grub.useOSProber = true;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
 
   #---------------------------------------------------------------------
   # SysRQ for is rebooting their machine properly if it freezes
@@ -55,22 +55,22 @@
   # Time Zone and Locale
   #---------------------------------------------------------------------
 
-  time.timeZone = "America/New_York";
-  i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = "Australia/Perth";
+  i18n.defaultLocale = "en_AU.UTF-8";
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    LC_ADDRESS = "en_AU.UTF-8";
+    LC_IDENTIFICATION = "en_AU.UTF-8";
+    LC_MEASUREMENT = "en_AU.UTF-8";
+    LC_MONETARY = "en_AU.UTF-8";
+    LC_NAME = "en_AU.UTF-8";
+    LC_NUMERIC = "en_AU.UTF-8";
+    LC_PAPER = "en_AU.UTF-8";
+    LC_TELEPHONE = "en_AU.UTF-8";
+    LC_TIME = "en_AU.UTF-8";
   };
 
-  #---------------------------------------------------------------------
-  # Audio - Enable sound with pipewire.
+  # --------------------------------------------------------------------
+  # Audio
   #---------------------------------------------------------------------
 
   hardware.pulseaudio.enable = false;
@@ -83,18 +83,16 @@
     jack.enable = true;
     pulse.enable = true;
     wireplumber.enable = true;
-  # If you want to use JACK applications, uncomment this
-  #  jack.enable = true;
   };
 
   #---------------------------------------------------------------------
   # User Configuration
   #---------------------------------------------------------------------
 
-  users.users.brianf = {
+  users.users.tolga = {
     homeMode = "0755";
     isNormalUser = true;
-    description = "Brian Francisco";
+    description = "tolga erok";
     uid = 1000;
     extraGroups = [
       "adbusers"
@@ -124,12 +122,12 @@
   # Systemd tmpfiles configuration for user's home directory
   #---------------------------------------------------------------------
 
-  systemd.user.tmpfiles.rules = [
-    ''d /home/brianf/Development/NixOS 0755 brianf users - -''
-  # ''d /home/brianf/Xcripts 0755 brianf users - -''
-  # ''d /home/brianf/Syncthing 0755 brianf users - -'';
+  #systemd.user.tmpfiles.rules = [
+  #  "d /home/tolga/Development/NixOS 0755 tolga users - -"
+  # "d /home/tolga/Xcripts 0755 tolga users - -"
+  # "d /home/tolga/Syncthing 0755 tolga users - -"
 
-  ];
+  #];
 
   #---------------------------------------------------------------------
   # Provide a graphical Bluetooth manager for desktop environments
@@ -138,8 +136,8 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  #---------------------------------------------------------------------
-  # Automatic system upgrades, automatically reboot after an upgrade if
+  #---------------------------------------------------------------------  
+  # Automatic system upgrades, automatically reboot after an upgrade if 
   # necessary
   #---------------------------------------------------------------------
 

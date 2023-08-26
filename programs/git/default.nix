@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 let
-  fullname = "Brian Francisco";
-  email = "dbf-linux@gmail.com";
+  fullname = "Tolga Erok";
+  email = "kingtolga@gmail.com";
 
 in {
   programs = {
@@ -45,7 +45,7 @@ in {
     };
   };
 
-  # Do in terminal:
+  # Do in terminal::
   # cat ~/.ssh/id_ed25519.pub
   # git config --global user.signingkey your_ssh_key_id_here
 

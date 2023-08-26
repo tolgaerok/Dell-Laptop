@@ -56,8 +56,8 @@
         # Fun stuff
         #---------------------------------------------------------------------
 
-        icons = "sxiv -t /home/brianf/Pictures/icons";
-        wp = "sxiv -t /home/brianf/Pictures/Wallpapers";
+        icons = "sxiv -t /home/tolga/Pictures/icons";
+        wp = "sxiv -t /home/tolga/Pictures/Wallpapers";
 
         #---------------------------------------------------------------------
         # File access

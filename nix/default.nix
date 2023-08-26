@@ -6,8 +6,8 @@ let
 
 in {
 
-  imports = [   
-    
+  imports = [
+
     ./dconf
   ];
 
@@ -21,7 +21,7 @@ in {
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" "repl-flake" ];
       keep-derivations = true;
-      keep-outputs = true;      
+      keep-outputs = true;
       sandbox = true;
       trusted-users = [ "root" "${name}" ];
       warn-dirty = false;
