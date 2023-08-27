@@ -2,13 +2,15 @@
 
 let
 
-  name = "tolga";
+  name = "brianf";
 
 in {
 
   imports = [
 
     ./dconf
+    ./nixpkgs-config
+
   ];
 
   # Nix-specific settings and garbage collection options - Mostly research from NixOS wiki

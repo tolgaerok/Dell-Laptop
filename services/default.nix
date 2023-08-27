@@ -7,7 +7,10 @@
     # ./power-profiles-daemon   # Uncomment for laptops
     # ./thermald                # Uncomment for laptops
     # ./tlp                     # Uncomment for laptops
+    ./bluetooth-manager
+    ./dbus
     ./envfs
+    ./flat-pak
     ./fstrim
     ./mysql
     ./printer
