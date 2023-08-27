@@ -52,7 +52,7 @@
 #    in [
 #      "${automountOpts},credentials=${credentialsPath},uid=${uid},gid=${gid},vers=${vers},${cacheOpts}"
 #    ];
-  };
+#  };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/71bb2615-3252-4757-a54b-e334ba86c751"; }
