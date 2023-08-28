@@ -47,5 +47,5 @@ nix-shell -p samba4Full
 nix-shell -p cifs-utils
 
 # Run the script PART-B-WITH-SUDO.sh with superuser privileges
-sudo ./PART-B-WITH-SUDO.sh
+sudo ./stc/nixos/SETUP/PART-B-WITH-SUDO.sh
 
