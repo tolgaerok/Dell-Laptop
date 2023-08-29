@@ -3,11 +3,17 @@
 # Tolga Erok
 # 14/7/2023
 # Post Nixos setup
+# ¯\_(ツ)_/¯
 
 # -----------------------------------------------------------------------------------
 # Check if Script is Run as Root
 # -----------------------------------------------------------------------------------
+
+# Fix nixos horrible allowance to custom packages
 export NIXPKGS_ALLOW_INSECURE=1
+
+# For fun
+start_time=$(date +%s)
 
 if [ "$(id -u)" -ne 0 ]; then
     echo "This script must be run as root."
@@ -106,7 +112,9 @@ fi
 # Flatpak section
 # -----------------------------------------------------------------------------------
 
-echo "Install Flatpak apps..."
+echo "
+Install Flatpak apps...
+"
 
 # Enable Flatpak
 if ! flatpak remote-list | grep -q "flathub"; then
@@ -114,9 +122,10 @@ if ! flatpak remote-list | grep -q "flathub"; then
 fi
 
 # Update Flatpak
+echo "
+Updating cache, this will take a while...
+"
 sudo flatpak update -y
-
-echo "Updating cache, this will take a while..."
 
 # Install Flatpak apps
 packages=(
@@ -134,25 +143,22 @@ for package in "${packages[@]}"; do
     fi
 done
 
-# Double check for the latest Flatpak updates and remove Flatpak cruft
-sudo flatpak update -y
-# sudo flatpak uninstall --unused --delete-data -y
-# echo -e "\033[33mhi tolga\033[0m"
-
 # List all flatpak
 echo "Show Flatpak info:"
 su - "$USER" -c "flatpak remote-list"
 echo ""
 
-echo -e "\033[33mCheck all runtimes installed\033[0m"
+echo -e "
+\033[33mChecking all runtimes installed: \033[0m
+"
 flatpak list --runtime
 echo ""
 
-echo "List flatpak's installed"
+echo "
+List of flatpak's installed on system:
+"
 flatpak list --app
 echo ""
-
-
 
 # -----------------------------------------------------------------------------------
 #  Create some SMB user and group
@@ -165,7 +171,9 @@ prompt_input() {
 }
 
 # Create user/group
-echo "Time to create smb user & group"
+echo "
+Time to create smb user & group
+"
 
 # Prompt for the desired username and group for Samba
 sambausername=$(prompt_input $'\nEnter the USERNAME to add to Samba: ')
@@ -178,16 +186,14 @@ sudo smbpasswd -a "$sambausername"
 sudo usermod -aG "$sambagroup" "$sambausername"
 
 # Pause and continue
-echo -e "\nContinuing..."
+echo -e "
+Continuing..."
 read -r -n 1 -s -t 1
 
 # Create and configure the shared folder
 sudo mkdir -p "$shared_folder"
 sudo chgrp "$sambagroup" "$shared_folder"
 sudo chmod 0757 "$shared_folder"
-
-# Pause and continue
-read -r -p "Continuing..." -t 1 -n 1 -s
 
 # Configure Samba Filesharing Plugin for a user
 echo -e "\nCreate and configure the Samba Filesharing Plugin..."
@@ -215,34 +221,51 @@ sudo gpasswd sambashares -a "$username"
 # Set permissions for the user's home directory
 sudo chmod 0757 "/home/$username"
 
-# Run the following commands after sudo nixos-rebuild switch
+# Recheck to allow insecure packages
 export NIXPKGS_ALLOW_INSECURE=1
+
+# Rebuild system
 sudo nix-channel --update
+nix-env -u '*'
 sudo nixos-rebuild switch
 sudo nix-store --optimise
 
-# -----
+# -------------------
 # Install wps fonts
 # -------------------
 
+sudo mkdir -p ~/.local/share/fonts
 wget https://github.com/tolgaerok/fonts-tolga/raw/main/WPS-FONTS.zip 
-unzip WPS-FONTS.zip -d /usr/share/fonts
+unzip -o WPS-FONTS.zip -d ~/.local/share/fonts
+sudo fc-cache -vf ~/.local/share/fonts
+sudo fc-cache -f -v
+rm WPS-FONTS.zip
+rm WPS-FONTS.zip.*
 
-# ---‐‐------
+# ---‐‐---------------------------
 # make locations executable 
 # --------------------------------
 
-cd $HOME
-make-executable
-my-nix
-mylist
-neofetch
+cd $HOME && make-executable
+my-nix && mylist && neofetch
 cd /etc/nixos
 make-executable
 
-notify-send --app-name="DONE" "Basic setup for: $SUDO_USER" "Completed:
-Press ctrl+c to exit the matrix
+notify-send --icon=ktimetracker --app-name="DONE" "Basic setup for: $SUDO_USER" "Completed:
+
 Tolga Erok.
-¯\_(ツ)_/¯
+(ツ)_/¯
+Time taken: $time_taken
 " -u normal
 
+# Test alittle
+wps
+et
+shotwell
+Fish
+vscode
+sublime4
+vlc
+
+
+exit 1

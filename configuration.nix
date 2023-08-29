@@ -122,4 +122,9 @@
   system.stateVersion = "23.05";
   systemd.extraConfig = "DefaultTimeoutStopSec=10s";
 
+  #---------------------------------------------------------------------
+  # Switch to most recent kernel available
+  #---------------------------------------------------------------------
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
