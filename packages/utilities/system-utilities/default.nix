@@ -22,7 +22,7 @@
       duf
       fd
       figlet
-      htop
+      btop
       imagemagick
       inotify-tools         # inotifywait   inotifywatch    https://github.com/inotify-tools/inotify-tools/wiki
       isoimagewriter

@@ -14,9 +14,9 @@
       nixfmt
       nixos-option
       sublime4
-      vscode # conflicts with vscode-with-extensions as this is just a stand alone
-      vscode-extensions.mkhl.direnv
-      vscode-extensions.brettm12345.nixfmt-vscode
+     # vscode # conflicts with vscode-with-extensions as this is just a stand alone
+     # vscode-extensions.mkhl.direnv
+     # vscode-extensions.brettm12345.nixfmt-vscode
       
     ];
   };

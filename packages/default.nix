@@ -35,7 +35,8 @@
     ./custom-pkgs     # My personal system-wide pkgs
     ./devlopment
     ./julia
-    
+    ./vscode
+
     #---------------------------------------------------------------------
     # Desktop
     #---------------------------------------------------------------------
@@ -43,14 +44,13 @@
     ./internet        # clipgrab, wget, discord, whatsapp-for-linux, telegram, element, FF, Chrome
     ./networking      # samba4Full, clif-utilities, teamviewer, openssh, sshpass, iwd
     ./screensaver
-    ./wps
-    ./libreoffice-various     # libreoffice-fresh qownnotes, zotero
+    ./office     # libreoffice-fresh qownnotes, zotero, onlyoffice, wps
 
     #---------------------------------------------------------------------
     # System tools
     #---------------------------------------------------------------------
 
-    ./andriod
+    # ./andriod
     ./misc
     ./tools            # isoimagewriter, keepassxc, media-downloader, testdisk-qt, ventoy-full
     ./utilities

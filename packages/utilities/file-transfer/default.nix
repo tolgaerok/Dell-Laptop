@@ -10,6 +10,10 @@
       libfilezilla
       rsync 
       transmission-gtk
+      onedrive
+      megasync
+      rclone
+      rclone-browser
 
     ];
   };
