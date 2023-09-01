@@ -45,6 +45,8 @@
     ./networking      # samba4Full, clif-utilities, teamviewer, openssh, sshpass, iwd
     ./screensaver
     ./office     # libreoffice-fresh qownnotes, zotero, onlyoffice, wps
+    # ./wps
+    # ./libreoffice-various     # libreoffice-fresh qownnotes, zotero    
 
     #---------------------------------------------------------------------
     # System tools
@@ -54,6 +56,7 @@
     ./misc
     ./tools            # isoimagewriter, keepassxc, media-downloader, testdisk-qt, ventoy-full
     ./utilities
+    # ./ventoy-full
 
     #---------------------------------------------------------------------
     # Enable flatpak
