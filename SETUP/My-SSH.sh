@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Personal SSH script
+# Personal SSH script.
 # Tolga Erok. ¯\_(ツ)_/¯
 # 2/9/23
 
@@ -17,8 +17,21 @@ WHITE='\e[1;37m'
 ORANGE='\e[1;93m'
 NC='\e[0m'
 
+# Help text
+help_text="Personal script (beta)
+
+Usage: ./script.sh [OPTIONS]
+
+Options:
+--help              Show this help message
+--ubuntuserver      SSH to Ubuntu Server
+
+
+"
+
 COLOR_NUM=$((RANDOM % 7))
-# Assign a color variable based on the random number
+
+# Assign a color variable based on the RANDOM number
 case $COLOR_NUM in
     0) COLOR=$RED;;
     1) COLOR=$GREEN;;
@@ -27,7 +40,18 @@ case $COLOR_NUM in
     4) COLOR=$CYAN;;
     5) COLOR=$ORANGE;;
     *) COLOR=$WHITE;;
+
 esac
+
+# Function to check port 22
+function check_port22() {
+    if pgrep sshd > /dev/null; then
+        echo -e "${GREEN}[✔]${NC} SSH service is running on port 22\n"
+    else
+        echo -e "${RED}[✘]${NC} SSH service is not running on port 22. Install and enable SSHD service.\n"
+    fi
+}
+
 
 # Function to display the menu
 function display_menu() {
@@ -56,17 +80,19 @@ function ssh_command_retry() {
     local host=$1
     local command=$2
     local retries=2
-    local delay=1
+    local delay=0
 
     for ((i = 1; i <= retries; i++)); do
-        ssh -q tolga@"$host" "$command" && return 0
+        ssh -q "tolga@$host" "$command" && {
+            echo -e "${GREEN}[✔]${NC} Connected to $host successfully"
+            return 0
+        }
         echo -e "${RED}[✘]${NC} Failed to connect to $host. Retrying..."
         sleep "$delay"
     done
 
     echo -e "${RED}[✘]${NC} Unable to execute SSH command: $command\n"
     sleep 2
-    
 }
 
 check_internet_connection() {
@@ -86,49 +112,80 @@ check_internet_connection() {
     clear
 }
 
+# Function to display help text
+function show_help() {
+  echo -e "$help_text"
+}
+
 # Call the function to check internet connection
 check_internet_connection
+
+# Function to handle command-line options
+function handle_options() {
+    case "$1" in
+        --help)
+            show_help
+            exit 0
+        ;;
+        --checkport)
+            check_port22
+            exit 0
+        ;;
+        --ubuntuserver)
+            check_port22
+            ssh_command_retry "192.168.0.11" ""
+            # exit 0
+        ;;
+        *)
+        ;;
+    esac
+}
+
+# Call the function to handle command-line options
+handle_options "$1"
 
 # Main loop
 while true; do
     display_menu
     echo -e "${YELLOW}┌──($USER㉿$HOST)-[$(pwd)]${NC}"
 
-    choice=$1
-    if [[ ! $choice =~ ^[0-6]+$ ]]; then
-        echo -n -e "${YELLOW}└─\$>>${NC} "
-        read choice
-    fi
+    choice=""
+    echo -n -e "${YELLOW}└─\$>>${NC} "
+    read choice
 
     echo ""
     clear
 
     case $choice in
         1)
+            check_port22
             ssh_command_retry "192.168.0.20" ""
-            ;;
+        ;;
         2)
+            check_port22
             ssh_command_retry "192.168.0.11" ""
-            ;;
+        ;;
         3)
+            check_port22
             ssh_command_retry "192.168.0.13" ""
-            ;;
+        ;;
         4)
+            check_port22
             ssh_command_retry "192.168.0.3" ""
-            ;;
+        ;;
         5)
+            check_port22
             ssh_command_retry "192.168.0.8" ""
-            ;;
+        ;;
         6)
             mysql -h 192.168.0.11 -P 3306 -u tolga -p
-            ;;
-
+        ;;
         0)
             echo -e "${RED}[✘]${NC} Quitting the script.${NC}"
             break
-            ;;
+        ;;
         *)
             invalid_input
-            ;;
+        ;;
     esac
 done

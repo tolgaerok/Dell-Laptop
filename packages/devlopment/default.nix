@@ -4,9 +4,7 @@
   imports =
     [
       
-      #./database
       ./cli-utilities
-      ./clipboard
       ./code-search
       ./development
       ./git

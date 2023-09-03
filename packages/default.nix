@@ -34,7 +34,6 @@
     
     ./custom-pkgs     # My personal system-wide pkgs
     ./devlopment
-    ./julia
     # ./vscode
     ./vscodium
 
@@ -44,10 +43,7 @@
 
     ./internet        # clipgrab, wget, discord, whatsapp-for-linux, telegram, element, FF, Chrome
     ./networking      # samba4Full, clif-utilities, teamviewer, openssh, sshpass, iwd
-    ./screensaver
     ./office     # libreoffice-fresh qownnotes, zotero, onlyoffice, wps
-    # ./wps
-    # ./libreoffice-various     # libreoffice-fresh qownnotes, zotero    
 
     #---------------------------------------------------------------------
     # System tools

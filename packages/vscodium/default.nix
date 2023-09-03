@@ -6,7 +6,7 @@
 
           vscode = vscodium;
 
-          vscode = vscode;
+         # vscode = vscode;
 
           vscodeExtensions = with vscode-extensions;
             [

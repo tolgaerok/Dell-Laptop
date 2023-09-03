@@ -1,19 +1,16 @@
-{ pkgs, ... }: {
-  # Miscellaneous:
+{ pkgs, ... }:
+{
   environment = {
     systemPackages = with pkgs; [
 
-      cowsay # fortune | cowsay -f tux   fortune | cowsay -e ^^    fortune | cowsay | lolcat
-      fish
-      flatpak
-      fortune # unstr rot strfile fortune
-      libsForQt5.kweather
-      libsForQt5.kweathercore
-      lolcat # "lolcat" for colorful output
-      variety
+  #####################################
+  # Miscellaneous:
+  #####################################
 
-      papirus-icon-theme
-      themechanger
+      flatpak                    # Linux application sandboxing and distribution framework 
+      libsForQt5.kweather        # Weather application for Plasma Mobile
+      libsForQt5.kweathercore    # Library to facilitate retrieval of weather information including forecasts and alerts
+      variety                    # A wallpaper manager for Linux systems
 
     ];
   };
