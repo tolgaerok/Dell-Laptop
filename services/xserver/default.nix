@@ -6,7 +6,7 @@
   #---------------------------------------------------------------------
   services.xserver = {
     enable = true;
-    layout = "au";
+    layout = "us";
     xkbVariant = "";
 
     # For Laptop
