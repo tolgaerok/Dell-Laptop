@@ -13,7 +13,7 @@
       telegram-desktop           # Telegram Desktop messaging app
       element-desktop-wayland    # A feature-rich client for Matrix.org for Wayland
      # element-desktop            # A feature-rich client for Matrix.org
-      caprine-bin                # An elegant Facebook Messenger desktop app
+     # caprine-bin                # An elegant Facebook Messenger desktop app
 
       betterbird                 # Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will
 
