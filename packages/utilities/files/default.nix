@@ -15,7 +15,7 @@
       usbutils                        # Tools for working with USB devices, such as lsusb
 
       # XDG and File Managers
-      xdg-desktop-portal-gtk3         # Desktop integration portals for sandboxed apps
+      xdg-desktop-portal-gtk          # Desktop integration portals for sandboxed apps
       xfce.thunar                     # Xfce file manager
       xfce.thunar-volman              # Thunar extension for automatic management of removable drives and media
       xfce.thunar-dropbox-plugin      # A plugin that adds context-menu items for Dropbox to Thunar
