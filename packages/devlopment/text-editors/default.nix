@@ -10,7 +10,10 @@
       kate
       libkate          # A library for encoding and decoding Kate streams
       libsForQt5.kate  # Advanced text editor
+<<<<<<< Updated upstream
       neovim           # Vim text editor fork focused on extensibility and agility
+=======
+>>>>>>> Stashed changes
       vim              # The most popular clone of the VI editor
 
     ];

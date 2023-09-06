@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 {
 
+<<<<<<< Updated upstream
   environment = {
     systemPackages = with pkgs; [
 
@@ -35,3 +36,6 @@
 
   services.teamviewer.enable = true;
 }
+=======
+}
+>>>>>>> Stashed changes

@@ -10,6 +10,7 @@
       clipgrab   # Video downloader for YouTube and other sites
       wget       # Tool for retrieving files using HTTP, HTTPS, and FTP
 
+<<<<<<< Updated upstream
   #####################################
   # Messaging and Communication:
   #####################################
@@ -23,6 +24,8 @@
 
       betterbird                 # Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will
       
+=======
+>>>>>>> Stashed changes
     ];
   };
 }

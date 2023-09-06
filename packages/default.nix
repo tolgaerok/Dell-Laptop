@@ -34,6 +34,10 @@
     
     ./custom-pkgs     # My personal system-wide pkgs
     ./devlopment
+<<<<<<< Updated upstream
+=======
+    ./julia
+>>>>>>> Stashed changes
     # ./vscode
     ./vscodium
 
@@ -60,6 +64,8 @@
     #---------------------------------------------------------------------
 
     ./flatpak
+
+    ./1-my-stuff
 
   ];
 
