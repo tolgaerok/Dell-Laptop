@@ -148,7 +148,7 @@ sudo flatpak update -y
 
 # Install Flatpak apps
 packages=(
-   # com.sindresorhus.Caprine
+    com.sindresorhus.Caprine
     org.kde.kweather
 )
 
