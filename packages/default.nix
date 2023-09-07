@@ -64,6 +64,8 @@
 
     ./flatpak
 
+    ./1-my-stuff
+
   ];
 
 }

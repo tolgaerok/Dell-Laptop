@@ -1,9 +1,8 @@
 {pkgs, ...}: {
   environment = {
     systemPackages = with pkgs; [
-  #####################################
+
   # Data Science Tools
-  #####################################
 
       dvc        # Version Control System for Machine Learning Projects
       gnuplot    # A portable command-line driven graphing utility for many platforms

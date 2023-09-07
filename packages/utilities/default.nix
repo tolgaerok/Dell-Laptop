@@ -3,7 +3,9 @@
   imports =
     [
       
-      ./files
+      ./file-management
+      ./file-system
+      ./file-transfer
       ./system-utilities
     ];
 

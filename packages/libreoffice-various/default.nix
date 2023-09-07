@@ -1,10 +1,14 @@
 {pkgs, ...}: {
   environment = {
     systemPackages = with pkgs; [
-      # libreoffice-fresh
-      # libreoffice-qt
-      qownnotes
-      zotero
+
+  # Libreoffice
+      
+      libreoffice-fresh   # Comprehensive, professional-quality productivity suite, a variant of openoffice.org
+
+      qownnotes           # Plain-text file notepad and todo-list manager
+      zotero              # Collect, organize, cite, and share your research sources
+      
     ];
   };
 }

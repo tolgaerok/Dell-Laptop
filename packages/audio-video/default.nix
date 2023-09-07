@@ -2,9 +2,7 @@
   environment = {
     systemPackages = with pkgs; [
 
-  #####################################
   # Multimedia Utilities
-  #####################################
 
       audacity                 # Sound editor with graphical UI
       ffmpeg                   # A complete, cross-platform solution to record, convert and stream audio and video

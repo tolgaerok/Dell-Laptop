@@ -1,7 +1,5 @@
 { pkgs, ... }: {
 
-  # Development and Version Control:....
-
   environment = {
     systemPackages = with pkgs; [
 

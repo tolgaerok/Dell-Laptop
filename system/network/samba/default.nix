@@ -94,7 +94,7 @@
       #---------------------------------------------------------------------
 
       NixOs23-KDE-Public = {
-        path = "/home/tolga/Public";
+        path = "/home/brian/Public";
         comment = "Public Share";
         browseable = true;
         "read only" = false;
@@ -102,7 +102,7 @@
         writable = true;
         "create mask" = "0777";
         "directory mask" = "0777";
-        "force user" = "tolga";
+        "force user" = "brian";
         "force group" = "samba";
       };
 
@@ -118,7 +118,7 @@
         "guest ok" = false;
         "create mask" = "0644";
         "directory mask" = "0755";
-        "force user" = "tolga";
+        "force user" = "brian";
         "force group" = "samba";
       };
 

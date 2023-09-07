@@ -1,12 +1,13 @@
-{pkgs, ...}: {
+{ pkgs, ... }:{
+
   environment = {
     systemPackages = with pkgs; [
 
   #####################################
-  # Scientific Computing
+  # Clipboard Utilities:
   #####################################
-      julia
-      
+      wl-clipboard      # Command-line copy/paste utilities for Wayland    
+
     ];
   };
 }

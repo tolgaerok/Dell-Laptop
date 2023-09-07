@@ -1,8 +1,6 @@
 { pkgs, ... }: {
 
-  #####################################
   # Database related
-  #####################################
 
   environment = {
     systemPackages = with pkgs;

@@ -1,14 +1,13 @@
 { pkgs, ... }: {
-
   environment = {
     systemPackages = with pkgs; [
 
-  #####################################
+
   # system tools
-  #####################################
 
       isoimagewriter   # ISO Image Writer is a tool to write a .iso file to a USB disk.
-      keepassxc        # Offline password manager with many features.
+     # keepassxc        # Offline password manager with many features.
+      media-downloader # A Qt/C++ GUI front end to youtube-dl
       testdisk-qt      # Data recovery utilities
       xscreensaver     # A set of screensavers
                        #---------------------------------------------

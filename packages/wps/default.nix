@@ -1,16 +1,14 @@
 { pkgs, ... }:
 {
-  #---------------------------------------------------------------------
-  # Office and Productivity:
-  #---------------------------------------------------------------------
-
   environment = {
     systemPackages = with pkgs; [
 
-      # Office suite
+  # WPSoffice
+
       wpsoffice     
 
-      # Desktop accessories
+  # Desktop Accessories
+
       deepin.deepin-calculator
       
     ];

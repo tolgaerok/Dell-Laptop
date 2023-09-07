@@ -2,9 +2,7 @@
   environment = {
     systemPackages = with pkgs; [
 
-  #####################################
   # Archive Utilities
-  #####################################
 
       atool  # Archive command line helper
       gzip   # GNU zip compression program
