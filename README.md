@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 style="font-size: 24px; color: blue;">My NixOs 23.05 environment, KDE & Nvidia GT-1030</h1>
+  <h1 style="font-size: 24px; color: blue;">My NixOs 23.05 environment, KDE</h1>
 </div>
 
 
@@ -7,7 +7,7 @@
 <table style="border-collapse: collapse; width: 100%;">
   <tr>
     <td align="center" style="border: none;">
-      <img src="https://github.com/tolgaerok/Linux-Tweaks-And-Scripts/assets/110285959/af6b682f-0ddd-45bc-babc-0584b0e70884" alt="Screenshot">
+      <img src="[https://github.com/tolgaerok/Linux-Tweaks-And-Scripts/assets/110285959/af6b682f-0ddd-45bc-babc-0584b0e70884](https://avatars.githubusercontent.com/u/110285959?v=4)" alt="Screenshot">
     </td>
   </tr>
 </table>
