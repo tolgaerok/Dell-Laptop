@@ -1,12 +1,12 @@
-# MOTHERBOARD:  	Lenovo Motherboard 23926CU Win8 Pro DPK TPG
 # MODEL:        	Lenovo ThinkPad T530 23926CU
+# MOTHERBOARD:  	Lenovo Motherboard 23926CU Win8 Pro DPK TPG
 # BIOS:         	Lenovo BIOS G4ETB7WW (2.77 ) 09/09/2019
 # CPU:          	Intel(R) Core i7-3520M CPU @ 2.90GHz
 # GPU:          	Intel 3rd Gen Core processor Graphics Controller
 # RAM:          	2x RAM Module 8GB SODIMM DDR3 1600MT/s
-# SATA:         	PNY CS900 1TB SSD
+# STORAGE:         	PNY CS900 1TB SSD
 # NETWORK:      	Intel Centrino Advanced-N 6205 [Taylor Peak]
-# BLUE-TOOTH:   	Broadcom BCM20702 Bluetooth 4.0 [ThinkPad]
+# BLUETOOTH:    	Broadcom BCM20702 Bluetooth 4.0 [ThinkPad]
 #---------------------------------------------------------------------
 
 { config, desktop, pkgs, lib, username, ... }:
