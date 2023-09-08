@@ -2,7 +2,7 @@
   <h1 style="font-size: 24px; color: blue;">My NixOs 23.05 environment for Lenovo T530</h1>
 </div>
 
-
+This profile wouldn't be pissible without the great help from Tolga Erok.  All his great work is available on his GitHub, accessible by clicking his picture below
 
 <table style="border-collapse: collapse; width: 100%;">
   <tr>
