@@ -17,8 +17,6 @@
     ./rsync-back-up.nix
     ./rsync-home-to-server.nix    
     ./unmounter.nix
-    ./update.nix
-    
     
   ];
 

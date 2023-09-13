@@ -9,16 +9,6 @@
     layout = "au";
     xkbVariant = "";
 
-    # For Laptop
-    libinput = {
-      enable = true;
-      touchpad.tapping = false;
-      touchpad.naturalScrolling = true;
-      touchpad.scrollMethod = "twofinger";
-      touchpad.disableWhileTyping = true;
-      touchpad.clickMethod = "clickfinger";
-    };
-
     desktopManager = { plasma5.enable = true; };
 
     displayManager.sddm = {

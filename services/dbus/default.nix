@@ -1,13 +1,9 @@
-{ config, pkgs, lib, ... }:
+# ---------------------------------------------------------------------
+# Enables the D-Bus service, which is a message bus system that allows 
+# communicaflatpak-packages.nixtion between applications
+# Thanks Chris Titus!
+#---------------------------------------------------------------------
 
 {
-  # Enable the D-Bus service, which is a message bus system that allows
-  # communication between applications.
-  # Thanks Chris Titus!
-  services = {
-    dbus = {
-      enable = true;
-      packages = with pkgs; [ dconf gcr udisks2 ];
-    };
-  };
+  services.dbus.enable = true;
 }

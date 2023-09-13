@@ -8,15 +8,14 @@
 
   imports = [
 
-    #./boot-kernel
     ./bluetooth
+    ./boot-kernel
     ./documentation
     ./env
     ./firewall
     ./fonts
-    ./kernel-sysctl     # kernel tweaks
     ./network
-    # ./theme    # GNOME THEME?
+
   ];
 
 }

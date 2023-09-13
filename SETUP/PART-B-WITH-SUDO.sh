@@ -2,21 +2,14 @@
 
 # Tolga Erok
 # 14/7/2023
-# Post Nixos setup!
-# ¯\_(ツ)_/¯
+# Post Nixos setup
 
 # -----------------------------------------------------------------------------------
 # Check if Script is Run as Root
 # -----------------------------------------------------------------------------------
 
-# Fix nixos horrible allowance to custom packages
-export NIXPKGS_ALLOW_INSECURE=1
-
-# For fun
-start_time=$(date +%s)
-
-if [ "$(id -u)" -ne 0 ]; then
-    echo "This script must be run as root."
+if [[ $EUID -ne 0 ]]; then
+    echo "You must be a root user to run this script, please run sudo ./install.sh" 2>&1
     exit 1
 fi
 
@@ -24,29 +17,8 @@ fi
 # Set some variables & functions
 # -----------------------------------------------------------------------------------
 
-RED='\e[1;31m'
-GREEN='\e[1;32m'
-YELLOW='\e[1;33m'
-BLUE='\e[1;34m'
-CYAN='\e[1;36m'
-WHITE='\e[1;37m'
-ORANGE='\e[1;93m'
-NC='\e[0m'
-
 # Location of private samba folder
 shared_folder="/home/NixOs-KDE"
-
-# Install notify agents
-nix-env -iA nixos.libnotify
-nix-env -iA nixos.notify-desktop
-
-# Install Samba
-nix-env -iA nixos.cifs-utils
-nix-env -iA nixos.samba4Full
-
-# Define user and group IDs here
-user_id=$(id -u "$SUDO_USER")
-group_id=$(id -g "$SUDO_USER")
 
 # Get the user and group names using the IDs
 user_name=$(id -un "$user_id")
@@ -57,9 +29,7 @@ create_directory_if_not_exist() {
     if [ ! -d "$1" ]; then
         mkdir -p "$1"
         echo "Created directory: $1"
-        chown "$user_name":"$group_name" "$1"
-        chmod 755 "$1"  # Set read and execute permissions for user, group, and others
-        make-executable
+        chmod 757 "$1" # Set full access (read, write, and execute) for user, group, and others
     fi
 }
 
@@ -67,21 +37,30 @@ create_directory_if_not_exist() {
 update_directory_permissions() {
     if [ -d "$1" ]; then
         perm=$(stat -c "%a" "$1")
-        if [ "$perm" != "755" ]; then
+        if [ "$perm" != "757" ]; then
             echo "Updating permissions of existing directory: $1"
-            chmod 755 "$1"
-            make-executable
+            chmod 757 "$1"
         fi
     fi
 }
 
 # -----------------------------------------------------------------------------------
-# Get user id and group id
+# Get user id an group id
 # -----------------------------------------------------------------------------------
 
-# Get the user and group IDs of the currently logged-in user
-user_id=$(id -u "$SUDO_USER")
-group_id=$(id -g "$SUDO_USER")
+# Check if the script is run using sudo
+if [ "$(id -u)" = "0" ] && [ -n "$SUDO_USER" ]; then
+    # Get the original non-root user ID and group ID
+    user_id=$(id -u "$SUDO_USER")
+    group_id=$(id -g "$SUDO_USER")
+    
+    # Display the non-root user ID, name, and group ID
+    echo "Non-Root User: $user_name (ID: $user_id)"
+    echo "Non-Root Group: $group_name (ID: $group_id)"
+else
+    echo "This script should be run using sudo."
+    exit 1
+fi
 
 # -----------------------------------------------------------------------------------
 #  Create some directories and set permissions
@@ -94,20 +73,6 @@ if [ -n "$user_name" ] && [ -n "$group_name" ]; then
     create_directory_if_not_exist "$home_dir"
     create_directory_if_not_exist "$config_dir"
     
-    # Directories to create and set permissions
-    directories=(
-        "$home_dir/Documents"
-        "$home_dir/Music"
-        "$home_dir/Pictures"
-        "$home_dir/Public"
-        "$home_dir/Templates"
-        "$home_dir/Videos"
-    )
-    
-    for dir in "${directories[@]}"; do
-        create_directory_if_not_exist "$dir"
-    done
-    
     # Update directory permissions
     update_directory_permissions "$home_dir/Documents"
     update_directory_permissions "$home_dir/Music"
@@ -119,9 +84,17 @@ if [ -n "$user_name" ] && [ -n "$group_name" ]; then
     # Set ownership for directories
     sudo chown -R "$user_name":"$group_name" "$home_dir"
     
+    # Additional chown commands for directories
+    create_directory_if_not_exist "$home_dir/Documents"
+    create_directory_if_not_exist "$home_dir/Music"
+    create_directory_if_not_exist "$home_dir/Pictures"
+    create_directory_if_not_exist "$home_dir/Public"
+    create_directory_if_not_exist "$home_dir/Templates"
+    create_directory_if_not_exist "$home_dir/Videos"
+    
     # Give full permissions to the nix.conf file
     echo "experimental-features  = nix-command flakes" | sudo -u "$user_name" tee "$config_dir/nix.conf"
-    chmod 644 "$config_dir/nix.conf"  # Set read permissions for user, group, and others
+    chmod 757 "$config_dir/nix.conf" # Set full access (read and write) for user, group, and others
 else
     echo "Failed to retrieve non-root user and group information."
     exit 1
@@ -131,9 +104,7 @@ fi
 # Flatpak section
 # -----------------------------------------------------------------------------------
 
-echo "
-Install Flatpak apps...
-"
+echo "Install Flatpak apps..."
 
 # Enable Flatpak
 if ! flatpak remote-list | grep -q "flathub"; then
@@ -141,10 +112,9 @@ if ! flatpak remote-list | grep -q "flathub"; then
 fi
 
 # Update Flatpak
-echo "
-Updating cache, this will take a while...
-"
 sudo flatpak update -y
+
+echo "Updating cache, this will take a while..."
 
 # Install Flatpak apps
 packages=(
@@ -162,22 +132,26 @@ for package in "${packages[@]}"; do
     fi
 done
 
+# Double check for the latest Flatpak updates and remove Flatpak cruft
+sudo flatpak update -y
+# sudo flatpak uninstall --unused --delete-data -y
+# echo -e "\033[33mhi tolga\033[0m"
+
 # List all flatpak
 echo "Show Flatpak info:"
 su - "$USER" -c "flatpak remote-list"
 echo ""
 
-echo -e "
-\033[33mChecking all runtimes installed: \033[0m
-"
+echo -e "\033[33mCheck all runtimes installed\033[0m"
 flatpak list --runtime
 echo ""
 
-echo "
-List of flatpak's installed on system:
-"
+echo "List flatpak's installed"
 flatpak list --app
 echo ""
+
+notify-send --app-name="DONE" "Flatpak setup for: $(whoami)" "$(flatpak list --app)" -u normal
+echo "Flatpak Software install complete..."
 
 # -----------------------------------------------------------------------------------
 #  Create some SMB user and group
@@ -190,22 +164,29 @@ prompt_input() {
 }
 
 # Create user/group
-echo "
-Time to create smb user & group
-"
+echo "Time to create smb user & group"
 
-create-smb-user
+# Prompt for the desired username and group for Samba
+sambausername=$(prompt_input $'\nEnter the USERNAME to add to Samba: ')
+sambagroup=$(prompt_input $'\nEnter the GROUP name to add username to Samba: ')
+
+# Create Samba user and group
+sudo groupadd "$sambagroup"
+sudo useradd -m "$sambausername"
+sudo smbpasswd -a "$sambausername"
+sudo usermod -aG "$sambagroup" "$sambausername"
 
 # Pause and continue
-echo -e "${GREEN}[✔]${NC} SMB user and Samba group added\n"
+echo -e "\nContinuing..."
 read -r -n 1 -s -t 1
-
-clear
 
 # Create and configure the shared folder
 sudo mkdir -p "$shared_folder"
 sudo chgrp "$sambagroup" "$shared_folder"
 sudo chmod 0757 "$shared_folder"
+
+# Pause and continue
+read -r -p "Continuing..." -t 1 -n 1 -s
 
 # Configure Samba Filesharing Plugin for a user
 echo -e "\nCreate and configure the Samba Filesharing Plugin..."
@@ -233,46 +214,35 @@ sudo gpasswd sambashares -a "$username"
 # Set permissions for the user's home directory
 sudo chmod 0757 "/home/$username"
 
-# Recheck to allow insecure packages
-export NIXPKGS_ALLOW_INSECURE=1
+# Run the following commands after sudo nixos-rebuild switch
+sudo nix-channel --update
+sudo nixos-rebuild switch
+sudo nix-store --optimise
 
-clear
-
-# Rebuild system
-
-nixos-update
-
-# -------------------
+# -----
 # Install wps fonts
 # -------------------
-clear && echo -e "${GREEN}[✔]${NC} Installing custom fonts for ${BLUE} WPS${NC}\n"
-sudo mkdir -p ~/.local/share/fonts
-wget https://github.com/tolgaerok/fonts-tolga/raw/main/WPS-FONTS.zip
-unzip -o WPS-FONTS.zip -d ~/.local/share/fonts
-sudo fc-cache -vf ~/.local/share/fonts
-sudo fc-cache -f -v
-rm WPS-FONTS.zip
-rm WPS-FONTS.zip.*
 
-# ---‐‐---------------------------
-# make locations executable
+wget https://github.com/tolgaerok/fonts-tolga/raw/main/WPS-FONTS.zip 
+unzip WPS-FONTS.zip -d /usr/share/fonts
+
+# ---‐‐------
+# make locations executable 
 # --------------------------------
-clear && echo -e "${GREEN}[✔]${NC} Almost finished\n"
+
 cd $HOME
-mse
-my-nix && mylist && neofetch
-sudo chmod -R 777 /etc/nixos
-
-# Test alittle
-wps
-et
-shotwell
-
-clear && echo -e "${GREEN}[✔]${NC} Setup finished\n"
-clear && read -p "Press enter then control + c on next screen to exit cmatrix..."
-
+make-executable
+my-nix
+mylist
+neofetch
+cd /etc/nixos
+make-executable
+notify-send --app-name="DONE" "Basic setup for: $(whoami)" "Completed: 
+Press ctrl+c to exit the matrix
+Tolga Erok. 
+¯\_(ツ)_/¯
+" -u normal
 cmatrix
+chmod 600 ~/.ssh/id_ed25519
+chmod 644 ~/.ssh/id_ed25519.pub
 
-clear
-
-exit 1

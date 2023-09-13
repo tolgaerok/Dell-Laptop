@@ -11,6 +11,10 @@
 
       # Add any custom fish shell initialization commands here
       interactiveShellInit = ''
+        set fish_cursor_default block blink
+        set fish_cursor_insert line blink
+        set fish_cursor_replace_one underscore blink
+        set fish_cursor_visual block
         set -U fish_color_autosuggestion brblack
         set -U fish_color_cancel -r
         set -U fish_color_command green
@@ -37,11 +41,6 @@
         set -U fish_pager_color_description yellow
         set -U fish_pager_color_prefix white --bold --underline
         set -U fish_pager_color_progress brwhite '--background=cyan'
-        set fish_cursor_default block blink
-        set fish_cursor_insert line blink
-        set fish_cursor_replace_one underscore blink
-        set fish_cursor_visual block
-        set fish_greeting # Disables the greeting
       '';
 
       # Fish shellAbbrs
@@ -73,8 +72,8 @@
         lsla = "lsd -la";
 
         # fun stuff
-        icons = "sxiv -t /home/brian/Pictures/icons";
-        wp = "sxiv -t /home/brian/Pictures/Wallpapers";
+        icons = "sxiv -t /home/tolga/Pictures/icons";
+        wp = "sxiv -t /home/tolga/Pictures/Wallpapers";
 
         # file access
         cp = "cp -riv";

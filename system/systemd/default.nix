@@ -16,8 +16,8 @@
   #---------------------------------------------------------------------
   # Systemd tmpfiles rules for user's home directory
   #---------------------------------------------------------------------
-  systemd.user.tmpfiles.rules = lib.optionalString (username == "brian") [
-    "d /home/brian/Development/NixOS 0755 brian users - -"
+  systemd.user.tmpfiles.rules = lib.optionalString (username == "tolga") [
+    "d /home/tolga/Development/NixOS 0755 tolga users - -"
     # "d /home/tolga/Xcripts 0755 tolga users - -"
     # "d /home/tolga/Syncthing 0755 tolga users - -"
   ];

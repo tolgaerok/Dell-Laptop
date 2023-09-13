@@ -12,21 +12,16 @@
   hardware.nvidia.modesetting.enable = true;
   hardware.opengl.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;   # Works well with Nvidia GT-1030 onwards
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  # -----------------------------------------------------------------------------
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
-  # -----------------------------------------------------------------------------
 
-  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta
 
-  # -----------------------------------------------------------------------------
   # Check legacy drivers https://www.nvidia.com/en-us/drivers/unix/legacy-gpu/
-  # -----------------------------------------------------------------------------
-
-  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_340;
-  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;  # Works well with Nvidia GT-710 and below
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_340
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390
 
 }

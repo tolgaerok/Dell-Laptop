@@ -5,14 +5,14 @@
     systemPackages = with pkgs; [
 
       # Picture manger
-      digikam                    # Photo Management Program
-      shotwell                   # Popular photo organizer for the GNOME desktop
+      digikam
+      shotwell
 
       # Picture Editors
-      gimp-with-plugins          # The GNU Image Manipulation Program
+      gimp-with-plugins
 
       # Disc burner
-      #brasero                   # A Gnome CD/DVD Burner
+      brasero
 
     ];
   };

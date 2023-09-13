@@ -35,36 +35,31 @@
     ./custom-pkgs     # My personal system-wide pkgs
     ./devlopment
     ./julia
-    # ./vscode
-    ./vscodium
-
+    
     #---------------------------------------------------------------------
     # Desktop
     #---------------------------------------------------------------------
 
-    ./internet        # clipgrab, wget, discord, whatsapp-for-linux, telegram, element, FF, Chrome
+    ./internet        # clipgrab, wget, discord, whatsapp-for-linux, FF, Chrome
     ./networking      # samba4Full, clif-utilities, teamviewer, openssh, sshpass, iwd
     ./screensaver
     ./wps
-    ./libreoffice-various     # libreoffice-fresh qownnotes, zotero
+    ./libreoffice-various     # libreoffice, libreoffice-qt, qownnotes, zotero
 
     #---------------------------------------------------------------------
     # System tools
     #---------------------------------------------------------------------
 
-    # ./andriod
+    ./andriod
     ./misc
     ./tools            # isoimagewriter, keepassxc, media-downloader, testdisk-qt, ventoy-full
     ./utilities
-    # ./ventoy-full
 
     #---------------------------------------------------------------------
     # Enable flatpak
     #---------------------------------------------------------------------
 
     ./flatpak
-
-    ./1-my-stuff
 
   ];
 

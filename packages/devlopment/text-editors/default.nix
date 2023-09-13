@@ -1,16 +1,14 @@
 { pkgs, ... }: {
 
+  # Text Editors and Utilities:
   environment = {
     systemPackages = with pkgs; [
 
-  #####################################
-  # Text Editors and Utilities:
-  #####################################
-
+      # Text Editors
       kate
-      libkate          # A library for encoding and decoding Kate streams
-      libsForQt5.kate  # Advanced text editor
-      vim              # The most popular clone of the VI editor
+      libkate
+      libsForQt5.kate
+      vim
 
     ];
   };

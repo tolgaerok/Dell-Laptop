@@ -1,13 +1,9 @@
-{ pkgs, ... }:{
-
+{ pkgs, ... }:
+{
+  # Clipboard Utilities:
   environment = {
     systemPackages = with pkgs; [
-
-  #####################################
-  # Clipboard Utilities:
-  #####################################
-      wl-clipboard      # Command-line copy/paste utilities for Wayland    
-
+      wl-clipboard      
     ];
   };
 }
