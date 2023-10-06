@@ -15,7 +15,7 @@
     #---------------------------------------------------------------------
     # Laptop: HP-i7-Eilte-Folio-9470M
     #---------------------------------------------------------------------
-    ./machines/HP-i7-Eilte-Folio-9470M/HP-FOLIO-configuration.nix
+    ./machines/Dell-Latitude-E6540/configuration.nix
 
     #---------------------------------------------------------------------
     # Main machine: HP-i7-EliteDesk-800-G1-SFF
