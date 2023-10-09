@@ -1,6 +1,14 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# MODEL:      	Dell Latitude E6540 
+# BIOS:       	Dell BIOS A17 12/01/2015
+# MOTHERBOARD:	Dell Motherboard 0CYT5F A00
+# CPU:        	Intel Core i7-4800MQ CPU @ 2.70GHz
+# GPU:        	Intel 4th Gen Core Processor Integrated Graphics Controller
+# GPU:          AMD/ATI Mars XTX [Radeon HD 8790M]
+# RAM:        	2x RAM Module 8GB SODIMM DDR3 1600MT/s
+# HARD DRIVE: 	PNY CS900 1TB SSD
+# NETWORK:    	Intel  	Centrino Ultimate-N 6300
+# BLUETOOTH:  	
+#--------------------------------------------------------------------------------------------------------------------------
 
 { config, pkgs, ... }:
 
@@ -38,6 +46,15 @@
   #   Enable networking
   # -----------------------------------------------------------------
   networking.networkmanager.enable = true;
+
+  #---------------------------------------------------------------------
+  # Switch to most recent kernel available
+  #---------------------------------------------------------------------
+#  boot.kernelPackages = pkgs.linuxPackages_latest;
+#  boot.kernelPackages = pkgs.linuxPackages_xanmod; #(6.3)
+#  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest; #(6.4)
+#  boot.kernelPackages = pkgs.linuxPackages_xanmod_stable; #(6.4 hardened)
+#  boot.kernelPackages = pkgs.linuxPackages_xanmod_tt; #(6.5)
 
   # -----------------------------------------------------------------
   #   Enable the X11 windowing system.
