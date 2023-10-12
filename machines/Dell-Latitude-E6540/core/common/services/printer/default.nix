@@ -1,25 +1,31 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   extraBackends = [ pkgs.epkowa ];
-  printerDrivers =
-    [ pkgs.gutenprint pkgs.gutenprintBin pkgs.hplip pkgs.hplipWithPlugin ];
-in {
+
   #---------------------------------------------------------------------
-  # Scanner drivers
+  # Printers and printer drivers (To suit my HP LaserJet 600 M601)
+  #---------------------------------------------------------------------
+  printerDrivers = [
+
+    pkgs.gutenprint               # Drivers for many different printers from many different vendors
+    pkgs.gutenprintBin            # Additional, binary-only drivers for some printers
+    pkgs.hplip                    # Drivers for HP printers
+    pkgs.hplipWithPlugin          # Drivers for HP printers, with the proprietary plugin. Use in terminal  NIXPKGS_ALLOW_UNFREE=1 nix-shell -p hplipWithPlugin --run 'sudo -E hp-setup'
+    # pkgs.brgenml1cupswrapper    # Generic drivers for more Brother printers
+    # pkgs.brgenml1lpr            # Generic drivers for more Brother printers
+    # pkgs.brlaser                # Drivers for some Brother printers
+
+  ];
+
+in {
+
+  #---------------------------------------------------------------------
+  # Scanner and printing drivers
   #---------------------------------------------------------------------
 
   hardware.sane.enable = true;
   hardware.sane.extraBackends = extraBackends;
-
-  #---------------------------------------------------------------------
-  # Printers and printer drivers (To suit my HP LaserJet 600 M601)
-  # In terminal: sudo NIXPKGS_ALLOW_UNFREE=1 nix-shell -p hplipWithPlugin 
-  # then run: sudo -E hp-setup
-  #---------------------------------------------------------------------
-
-  services.avahi.enable = true;
-  services.avahi.openFirewall = true;
   services.printing.drivers = printerDrivers;
   services.printing.enable = true;
 
