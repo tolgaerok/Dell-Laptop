@@ -5,14 +5,14 @@
       #####################################
       # Media & Graphics
       #####################################
-  #    blender                           # 3D Creation/Animation/Publishing System
-  #    inkscape-with-extensions          # Vector graphics editor
+      blender                           # 3D Creation/Animation/Publishing System
+      inkscape-with-extensions          # Vector graphics editor
 
       #####################################
       # Messaging and Communication:
       #####################################
-  #    telegram-desktop                  # Telegram Desktop messaging app
-  #    element-desktop-wayland           # A feature-rich client for Matrix.org for Wayland
+      telegram-desktop                  # Telegram Desktop messaging app
+      element-desktop-wayland           # A feature-rich client for Matrix.org for Wayland
 
   #    betterbird                        # Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will
 

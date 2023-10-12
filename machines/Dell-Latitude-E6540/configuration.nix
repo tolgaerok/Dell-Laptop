@@ -16,8 +16,11 @@
   imports = [
 
     ./core/common
-    ./core/system-tweaks/kernel-tweaks/16GB-SYSTEM/16GB-SYSTEM.nix
-    ./core/system-tweaks/storage-tweaks/SSD/SSD-tweak.nix
+    ./core/system-tweaks/kernel-tweaks/16GB-SYSTEM/16GB-SYSTEM.nix      # Kernel tweak for 28GB
+    ./core/system-tweaks/kernel-upgrades/xanmod.nix                     # Xanmod kernel
+ #   ./core/system-tweaks/kernel-upgrades/latest-standard.nix            # Latest default NixOS kernel
+    ./core/system-tweaks/storage-tweaks/SSD/SSD-tweak.nix               # SSD read & write tweaks
+    ./core/system-tweaks/zram/zram-16GB-SYSTEM.nix                      # Zram tweak for 28GB
     ./gpu/intel/HD-INTEL.nix
     ./hardware-configuration.nix
     ./user
@@ -27,10 +30,18 @@
   # -----------------------------------------------------------------
   #   Bootloader.
   # -----------------------------------------------------------------
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
+    initrd.systemd.enable = true;
+    kernelParams = [ "quiet" "intel_pstate=ondemand" ];
+    plymouth.enable = true;
+    plymouth.theme = "breeze";
+  };
 
-  networking.hostName = "Dell-HP-ProBook"; # Define your hostname.
+  networking.hostName = "Dell-E6540-NixOS"; # Define your hostname.
 
   #---------------------------------------------------------------------
   #   Allow unfree packages
@@ -48,7 +59,7 @@
   networking.networkmanager.enable = true;
 
   #---------------------------------------------------------------------
-  # Switch to most recent kernel available
+  # Select your kernel available
   #---------------------------------------------------------------------
 #  boot.kernelPackages = pkgs.linuxPackages_latest;
 #  boot.kernelPackages = pkgs.linuxPackages_xanmod; #(6.3)

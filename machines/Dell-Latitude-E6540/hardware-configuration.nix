@@ -36,6 +36,15 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/d89506fc-de68-4fd3-9616-e087be4e3b79";
       fsType = "ext4";
+
+    # Optimize SSD
+    options = [
+      "data=ordered"
+      "discard"
+      "errors=remount-ro"
+      "noatime"
+      "nodiratime"
+    ];
   };
 
   fileSystems."/boot" =
