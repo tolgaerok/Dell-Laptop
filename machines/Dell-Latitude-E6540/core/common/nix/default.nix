@@ -2,7 +2,7 @@
 
 let
 
-  name = "tolga";
+  name = "brian";
 
 in {
 
@@ -10,7 +10,9 @@ in {
 
     ./dconf
     ./nixpkgs-config
+
   ];
+
   #---------------------------------------------------------------------  
   # Nix-specific settings and garbage collection options - 
   # Mostly research from NixOS wiki

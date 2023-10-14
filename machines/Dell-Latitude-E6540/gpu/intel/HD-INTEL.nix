@@ -23,7 +23,7 @@ with lib;
   # Configure keymap in X11 windowing system & Enable Intel GPU in NixOS
   #---------------------------------------------------------------------
   services.xserver = {
-    videoDrivers = [ "modesetting" ]; # Use the dedicated Intel driver   
+    videoDrivers = [ "modesetting" ]; # Use the dedicated Intel driver
     xkbVariant = "";
     libinput.enable = true;
     libinput.touchpad.tapping = false;
@@ -50,6 +50,9 @@ with lib;
   #---------------------------------------------------------------------
   hardware.opengl = {
     enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+
     extraPackages = with pkgs; [
       intel-gmmlib
       intel-media-driver
