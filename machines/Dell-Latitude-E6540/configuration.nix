@@ -16,14 +16,14 @@
   imports = [
 
     ./core/common
-    ./core/system-tweaks/kernel-tweaks/16GB-SYSTEM/16GB-SYSTEM.nix      # Kernel tweak for 28GB
+    ./core/system-tweaks/kernel-tweaks/16GB-SYSTEM/16GB-SYSTEM.nix      # Kernel tweak for 16GB
     ./core/system-tweaks/kernel-upgrades/xanmod.nix                     # Xanmod kernel
- #   ./core/system-tweaks/kernel-upgrades/latest-standard.nix            # Latest default NixOS kernel
     ./core/system-tweaks/storage-tweaks/SSD/SSD-tweak.nix               # SSD read & write tweaks
-    ./core/system-tweaks/zram/zram-16GB-SYSTEM.nix                      # Zram tweak for 28GB
+    ./core/system-tweaks/zram/zram-16GB-SYSTEM.nix                      # Zram tweak for 16GB
     ./gpu/intel/HD-INTEL.nix
     ./hardware-configuration.nix
     ./user
+ #   ./core/system-tweaks/kernel-upgrades/latest-standard.nix            # Latest default NixOS kernel
     
   ];
 
@@ -36,7 +36,7 @@
       systemd-boot.enable = true;
     };
     initrd.systemd.enable = true;
-    kernelParams = [ "quiet" "intel_pstate=ondemand" ];
+    
     plymouth.enable = true;
     plymouth.theme = "breeze";
   };
