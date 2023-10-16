@@ -15,9 +15,9 @@
     #---------------------------------------------------------------------
     # Laptop: Dell Latitude E6540 i7-4800MQ (8)
     #         GPU: Intel 4th Gen Core Processor / AMD ATI Radeon HD 8790M
-    #         RAM: 8GiB SODIMM DDR3 Synchronous 1600 MHz
+    #         RAM: 16GiB SODIMM DDR3 Synchronous 1600 MHz
     #---------------------------------------------------------------------
-    ./machines/Dell-Latitude-E6540/configuration.nix
+    ./machines/Dell-Latitude-E6540/Dell-E6540-configuration.nix
   ];
 
 }
