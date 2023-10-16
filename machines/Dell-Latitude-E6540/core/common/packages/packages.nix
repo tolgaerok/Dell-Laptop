@@ -46,12 +46,12 @@
       ffmpegthumbnailer               # ffmpegthumbnailer
       libdvdcss                       # A library for decrypting DVDs
       libdvdread                      # A library for reading DVDs
-      libopus
-      libvorbis
+      libopus                         # Open, royalty-free, highly versatile audio codec
+      libvorbis                       # Vorbis audio compression reference implementation
       mediainfo                       # mediainfo
       mpg123                          # out123 conplay mpg123-id3dump mpg123 mpg123-strip
       mplayer                         # gmplayer mplayer mencoder
-      mpv
+      mpv                             # General-purpose media player, fork of MPlayer and mplayer2
       ocamlPackages.gstreamer         # mpv mpv_identify.sh umpv
       simplescreenrecorder            # ssr-glinject simplescreenrecorder
       video-trimmer                   # video-trimmer
@@ -77,8 +77,8 @@
       # ---------------------------------------------------------------------
 
       # dialog
-      doas
-      fx
+      doas                            # Executes the given command as another user
+      fx                              # Terminal JSON viewer
       fzf                             # fzf-tmux fzf-share fzf
 
       # ---------------------------------------------------------------------
@@ -182,9 +182,7 @@
       # fish                           # Smart and user-friendly command line shell
       flatpak                        # Linux application sandboxing and distribution framework
       fortune                        # unstr rot strfile fortune
-      # libsForQt5.kdenetwork-filesharing
-      libsForQt5.kweather
-      libsForQt5.kweathercore
+
       lolcat                         # A rainbow version of cat for colorful output
                                      # "lolcat" for colorful output
       themechanger                   # A theme changing utility for Linux
@@ -249,7 +247,10 @@
       kate                # Advanced text editor
       kcalc               # Scientific calculator
       kgpg                # A KDE based interface for GnuPG, a powerful encryption utility
-      krename
+      krename             # A powerful batch renamer for KDE
+      # libsForQt5.kdenetwork-filesharing
+      libsForQt5.kweather           # Weather application for Plasma Mobile
+      libsForQt5.kweathercore       # Library to facilitate retrieval of weather information including forecasts and alerts 
       #libsForQt5.qt5.qttools        # A cross-platform application framework for C++
                                     # qhelpgenerator linguist qtplugininfo qdistancefieldgenerator pixeltool
                                     # qcollectiongenerator assistant qtdiag qdbusviewer lupdate qtpaths
@@ -312,7 +313,7 @@
       # ---------------------------------------------------------------------
 
       libarchive                    # bsdtar bsdcpio bsdcat
-      libbtbb
+      libbtbb                       # Bluetooth baseband decoding library
       libnotify                     # Desktop Notify agent example: notify-send --icon=fcitx --app-name="DONE" "Fonts folder copied into $(whoami)" "$font_dest" -u normal
       notify-desktop                # Desktop Notify agent example: notify-desktop --icon=call-start "Incoming call"   SOURCE: https://github.com/nowrep/notify-desktop/tree/master
 

@@ -18,7 +18,7 @@
         # Nixos related
         #---------------------------------------------------------------------
         
-        # rbs2 =        "sudo nixos-rebuild switch -I nixos-config=$HOME/nixos/configuration.nix";
+        rbs2 =        "sudo nixos-rebuild switch -I nixos-config=$HOME/nixos/configuration.nix";
         garbage =     "sudo nix-collect-garbage --delete-older-than 7d";
         lgens =       "sudo nix-env --profile /nix/var/nix/profiles/system --list-generations";
         neu =         "sudo nix-env --upgrade";
