@@ -79,3 +79,4 @@
 All credit for this environment goes to my brother from another mother, Tolga Erok.
 ![Tolga Erok](https://github.com/wvpianoman/pics/blob/main/tole.jpg)
 You will find all his configs [here...](https://github.com/tolgaerok/nixos-kde)
+
