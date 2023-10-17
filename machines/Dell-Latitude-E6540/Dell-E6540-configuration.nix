@@ -26,12 +26,12 @@
     ../../core/system-tweaks/zram/zram-16GB-SYSTEM.nix             # Zram tweak for 16GB
 
     # Main core
-    ../../core/common
+    ../../core
     ../../gpu/intel/HD-INTEL.nix
 
     # Users
     ../../user/SOS/SOS.nix
-    ../../user/tolga/brian.nix
+    ../../user/brian/brian.nix
     
     # Hardware configuration
     ./Dell-E6540-hardware-configuration.nix  

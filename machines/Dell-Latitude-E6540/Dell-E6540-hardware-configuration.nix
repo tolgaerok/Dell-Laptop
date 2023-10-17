@@ -30,7 +30,7 @@
 
   boot.extraModulePackages = [ ];
   boot.initrd.kernelModules = [ ];
-    kernelModules = [
+  boot.kernelModules = [
 
       "kvm-intel"
       "tcp_bbr"       # Dynamically optimize how data is sent over a network, aiming to achieve higher throughput and reduced latency
@@ -39,7 +39,7 @@
 
     # Enable BBR congestion control algorithm for TCP, , which can lead to improved network throughput and reduced latency.
 
-    kernel.sysctl = {
+  boot.kernel.sysctl = {
       "net.ipv4.tcp_congestion_control" = "bbr";
     };
     
