@@ -11,9 +11,11 @@
     ./distrobox
     ./internet
     ./packages.nix
-  #  ./steam
+   # ./plasma-manager/plasma-config.nix
+   # ./steam
     ./vm
     ./my-pkgs.nix
+    ./packages.nix
 
   ];
 
