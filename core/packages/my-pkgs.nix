@@ -78,6 +78,7 @@
       #------------------------------------
       bashInteractive                 # GNU Bourne-Again Shell, the de facto standard shell on Linux (for interactive use)
 
+      fish                            # Smart and user-friendly command line shell
       fishPlugins.tide                # The ultimate Fish prompt.
       fishPlugins.pure                # Pretty, minimal and fast Fish prompt, ported from zsh
       fishPlugins.forgit              # A utility tool powered by fzf for using git interactively.
