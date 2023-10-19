@@ -46,7 +46,6 @@
   boot.kernelParams = [
 
     "mitigations=off"
-    "quiet"
     "intel_pstate=ondemand"
 
   ];

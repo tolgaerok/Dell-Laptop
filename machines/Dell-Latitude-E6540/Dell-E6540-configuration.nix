@@ -27,11 +27,10 @@
 
     # Main core
     ../../core
-    ../../gpu/intel/HD-INTEL.nix
+    ../../core/gpu/intel/HD-INTEL.nix
 
     # Users
-    ../../user/SOS/SOS.nix
-    ../../user/brian/brian.nix
+    ../../core/user
     
     # Hardware configuration
     ./Dell-E6540-hardware-configuration.nix  
