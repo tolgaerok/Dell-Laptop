@@ -23,7 +23,6 @@
     wlr = {
 
       enable = true;
-
     };
 
     extraPortals = with pkgs; [

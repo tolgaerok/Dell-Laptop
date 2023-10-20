@@ -1,8 +1,8 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 
 let
-  email = "dbfrancisco@gmail.com";
-  fullname = "wvpianoman";
+  email = "kingtolga@gmail.com";
+  fullname = "Tolga Erok";
 
 in {
   programs = {
@@ -29,15 +29,30 @@ in {
         #init = { defaultBranch = "main"; };
         #pull = { rebase = "true"; };
         core.editor = "kate";
-        github.user = "wvpianoman";
+        github.user = "tolgaerok";
         init.defaultBranch = "main";
         pull.rebase = true;
 
         # ignores = [ ".envrc" ".direnv" ];
-        
+
         url = {
-          "git@github.com:" = { insteadOf = [ "https://github.com/" ]; };
-          "git@gitlab.com:" = { insteadOf = [ "https://gitlab.com/" ]; };
+
+          "git@github.com:" = {
+
+            insteadOf = [
+
+              "https://github.com/"
+            ];
+          };
+
+          "git@gitlab.com:" = {
+
+            insteadOf = [
+
+              "https://gitlab.com/"
+            ];
+
+          };
         };
 
         user = {

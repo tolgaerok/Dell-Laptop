@@ -5,12 +5,6 @@
     # Configuration for  Services 
     # ------------------------------------------
 
-    # ./plasma
-    # ./power-profiles-daemon   # Uncomment for laptops
-    # ./thermald                # Uncomment for laptops
-    # ./tlp                     # Uncomment for laptops
-    # ./virtualisation           # BETA NEEDS TESTING
-
     ./avahi
     ./bluetooth-manager
     ./dbus
@@ -19,13 +13,17 @@
     ./fstrim
     ./mysql
     ./openssh
+    ./openssh
+    ./printer
     ./samba
     ./scanner
     ./sddm
+    ./sshd
     ./udev
     ./udisks2
+    ./update-firmware
     ./xdg-portal
     ./xserver
-    
+
   ];
 }

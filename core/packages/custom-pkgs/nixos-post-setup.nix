@@ -165,6 +165,7 @@ let
     flatpak install -y flathub com.sindresorhus.Caprine
     flatpak install -y flathub org.kde.kweather
     flatpak install -y flathub org.fedoraproject.MediaWriter
+    flatpak install -y flathub io.github.mimbrero.WhatsAppDesktop
 
     # -----------------------------------------------------------------------------------
     # List all flatpak
@@ -273,6 +274,12 @@ let
     # Create the sambashares group if it doesn't exist
     # -----------------------------------------------------------------------------------
     sudo groupadd -r sambashares
+
+    # -----------------------------------------------------------------------------------
+    # Create the shares folder
+    # -----------------------------------------------------------------------------------
+    sudo mkdir -p /home/NixOs
+    sudo chmod 777 /home/NixOs
 
     # -----------------------------------------------------------------------------------
     # Create the usershares directory and set permissions

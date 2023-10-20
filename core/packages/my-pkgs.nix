@@ -14,7 +14,9 @@
       telegram-desktop                  # Telegram Desktop messaging app
       element-desktop-wayland           # A feature-rich client for Matrix.org for Wayland
 
-  #    betterbird                        # Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will
+      #betterbird                        # Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will
+      thunderbird                       # A full-featured e-mail client
+      bluemail                          # Free, secure, universal email app, capable of managing an unlimited number of mail accounts
 
       #------------------------------------
       # Miscellaneous:
@@ -78,6 +80,7 @@
       #------------------------------------
       bashInteractive                 # GNU Bourne-Again Shell, the de facto standard shell on Linux (for interactive use)
 
+      fish                            # Smart and user-friendly command line shell
       fishPlugins.tide                # The ultimate Fish prompt.
       fishPlugins.pure                # Pretty, minimal and fast Fish prompt, ported from zsh
       fishPlugins.forgit              # A utility tool powered by fzf for using git interactively.

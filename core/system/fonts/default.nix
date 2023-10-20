@@ -8,6 +8,9 @@
 
   fonts = {
     fontDir.enable = true;
+    fontconfig.enable = true;
+    enableGhostscriptFonts = true;
+
     fonts = with pkgs; [
       (nerdfonts.override {
         fonts = [ "FiraCode" "SourceCodePro" "UbuntuMono" ];
@@ -18,11 +21,14 @@
 
       comfortaa
       comic-neue
+      corefonts
       dejavu_fonts
       fira
+      fira-code
       fira-go
       font-awesome
       hackgen-nf-font
+      inconsolata
       inter
       iosevka-bin
       jetbrains-mono
@@ -57,7 +63,10 @@
     enableDefaultFonts = false;
 
     fontconfig = {
+      allowBitmaps = true;
       antialias = true;
+      cache32Bit = true;
+      useEmbeddedBitmaps = true;
 
       defaultFonts = {
         emoji = [ "Joypixels" "Noto Color Emoji" ];
@@ -66,7 +75,6 @@
         serif = [ "Source Serif" ];
       };
 
-      enable = true;
       hinting = {
         autohint = false;
         enable = true;

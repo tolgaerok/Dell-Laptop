@@ -18,7 +18,7 @@
       # profiles.default = {
       policies = {
         CaptivePortal = false;
-        DisableFirefoxAccounts = false;
+        DisableFirefoxAccounts = true;
         DisableFirefoxStudies = true;
         DisablePocket = true;
         DisableTelemetry = true;
@@ -42,7 +42,7 @@
         search.engines = {
           "Nix Packages" = {
             urls = [{
-              template = "https://search.nixos.org/packages";
+              template = "https://search.nixos.org/packages?query=%s";
               params = [
                 {
                   name = "type";

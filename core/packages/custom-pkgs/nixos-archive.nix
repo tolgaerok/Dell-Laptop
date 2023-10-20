@@ -12,8 +12,8 @@ let
     backup_folder="/etc/nixos/NIXOS-ARCHIVES"
 
     # Get the current date and time in the required format
-    current_date=$(date +"%Y %b %a, %l:%M%p")
-    backup_subfolder=$(date +"%Y/%b/%a-%l-%M%p")
+    current_date=$(date +"%Y %b %a-%l-%M%p")
+    backup_subfolder=$(date +"%Y/%b/%a,%l:%M%p")
 
     # Create the backup folder structure if it doesn't exist
     mkdir -p "$backup_folder/$backup_subfolder"

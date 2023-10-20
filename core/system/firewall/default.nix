@@ -6,8 +6,6 @@
 
     networkmanager.enable = true;
 
-    # services.samba-wsdd.enable = true; # make shares visible for windows 10 clients
-
     # Configure firewall to your likings:
     firewall = {
       allowPing = true;
@@ -67,9 +65,7 @@
           to = 1764;
         }
         # Teamviewer
-        5938
-        9100
-
+        # 5938
       ];
 
       allowedUDPPorts = [
@@ -86,7 +82,7 @@
         # Syncthing port
         21027
         # Teamviewer
-        5938
+        # 5938
         # Open KDE Connect
         {
           from = 1714;
@@ -94,7 +90,6 @@
         }
         # Syncthing port
         22000
-        9100
       ];
 
       #--------------------------------------------------------------------- 
@@ -107,4 +102,5 @@
 
     };
   };
+
 }

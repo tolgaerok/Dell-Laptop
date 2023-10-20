@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 
 #---------------------------------------------------------------------
 # Aliases for Bash console (Konsole)
@@ -18,7 +18,7 @@
         # Nixos related
         #---------------------------------------------------------------------
         
-        rbs2 =        "sudo nixos-rebuild switch -I nixos-config=$HOME/nixos/configuration.nix";
+        # rbs2 =        "sudo nixos-rebuild switch -I nixos-config=$HOME/nixos/configuration.nix";
         garbage =     "sudo nix-collect-garbage --delete-older-than 7d";
         lgens =       "sudo nix-env --profile /nix/var/nix/profiles/system --list-generations";
         neu =         "sudo nix-env --upgrade";
@@ -36,7 +36,6 @@
         mount =       "sudo ~/scripts/MYTOOLS/scripts/Mounting-Options/MOUNT-ALL.sh";
         mse =         "sudo ~/scripts/MYTOOLS/MAKE-SCRIPTS-EXECUTABLE.sh";
         mynix =       "sudo ~/scripts/MYTOOLS/scripts/COMMAN-NIX-COMMAND-SCRIPT/MyNixOS-commands.sh";         
-        nixos-tweak = "sudo ~/scripts/MYTOOLS/scripts/TWEAK-NIXOS/tolga-speed.sh"; 
         stoh =        "sudo ~/scripts/MYTOOLS/scripts/Zysnc-Options/ZYSNC-SERVER-TO-HOME.sh";
         trimgen =     "sudo ~/scripts/MYTOOLS/scripts/GENERATION-TRIMMER/TrimmGenerations.sh";
         umount =      "sudo ~/scripts/MYTOOLS/scripts/Mounting-Options/UMOUNT-ALL.sh";

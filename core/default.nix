@@ -7,12 +7,12 @@
 
   imports = [
     
+ #   ./modules/iphone/iphone.nix
     ./nix
     ./packages
     ./programs
     ./services
     ./system
-    ./unfree
 
   ];
 

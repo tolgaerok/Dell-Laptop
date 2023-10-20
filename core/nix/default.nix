@@ -1,8 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
+with lib;
 
 let
 
-  name = "brian";
+  name = "tolga";
 
 in {
 
@@ -33,18 +34,27 @@ in {
 
     };
 
+    # package = pkgs.nixUnstable; # Keep this if you want to use nixUnstable, otherwise replace with the appropriate nix version
+
+    settings = {
+      trusted-substituters = [
+
+        "http://cache.nixos.org"
+      ];
+
+      substituters = [
+
+        "http://cache.nixos.org"
+      ];
+
+    };
+
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
+
   };
-
-  #--------------------------------------------------------------------- 
-  # Misc
-  #--------------------------------------------------------------------- 
-
-  # services.fwupd.enable = true;
-  services.sshd.enable = true;
 
 }
