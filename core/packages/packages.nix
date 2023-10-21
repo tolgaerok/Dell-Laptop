@@ -17,7 +17,7 @@
                              # provides: aft-mtp-cli android-file-transfer aft-mtp-mount
 
       android-tools          # Android SDK platform tools
-			     # provides: lpadd append2simg lpmake mke2fs.android mkdtboimg simg2img lpdump lpunpack ext2simg 
+                             # provides: lpadd append2simg lpmake mke2fs.android mkdtboimg simg2img lpdump lpunpack ext2simg
                              # e2fsdroid adb unpack_bootimg repack_bootimg avbtool img2simg fastboot mkbootimg lpflash
 
       droidcam               # Linux client for DroidCam app
@@ -194,14 +194,14 @@
       # ---------------------------------------------------------------------
 
       # dvc                            # Version Control System for Machine Learning Projects
+      # luigi                          # Python package that helps you build complex pipelines of batch jobs
+      # quarto                         # Open-source scientific and technical publishing system built on Pandoc
+      # visidata                       # Interactive terminal multitool for tabular data
       gnuplot                        # A portable command-line driven graphing utility for many platforms
       iredis                         # A Terminal Client for Redis with AutoCompletion and Syntax Highlighting
       litecli                        # Command-line interface for SQLite
-      # luigi                          # Python package that helps you build complex pipelines of batch jobs
       mpi                            # Open source MPI-3 implementation
-      # quarto                         # Open-source scientific and technical publishing system built on Pandoc
       root                           # A data analysis framework
-      # visidata                       # Interactive terminal multitool for tabular data
 
       # ---------------------------------------------------------------------
       # Scanning and Image Viewing
@@ -421,7 +421,7 @@
 
       gnome.zenity                  # Tool to display dialogs from the commandline and shell scripts
       less                          # A more advanced file pager than ‘more’
-      lf                            # A terminal file manager written in Go and heavily inspired by ranger
+      # lf                            # A terminal file manager written in Go and heavily inspired by ranger
       lfs                           # Get information on your mounted disks
       lsd                           # The next gen ls command
       lsdvd                         # Display information about audio, video, and subtitle tracks on a DVD
@@ -434,7 +434,7 @@
       pmutils                       # A small collection of scripts that handle suspend and resume on behalf of HAL
       psmisc                        # A set of small useful utilities that use the proc filesystem (such as fuser, killall and pstree)
       rPackages.pkgconfig           # Set configuration options on a per-package basis. Options set by a given package only apply to that package, other packages are unaffected.
-      sl                            # Steam Locomotive runs across your terminal when you type 'sl'
+      # sl                            # Steam Locomotive runs across your terminal when you type 'sl'
       stow                          # A tool for managing the installation of multiple software packages in the same run-time directory tree
       tig                           # Text-mode interface for git
       tldr                          # Simplified and community-driven man pages

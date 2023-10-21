@@ -35,7 +35,7 @@
     #---------------------------------------------------------------------
     # Main: HP-i7-4770 x 8 EliteDesk G1 800 SFF Nvidia GT-1030
     #---------------------------------------------------------------------
-    ./machines/HP-i7-4770-EliteDesk-G1-800-SFF/EliteDesk-800-G1-configuration.nix
+    # ./machines/HP-i7-4770-EliteDesk-G1-800-SFF/EliteDesk-800-G1-configuration.nix
 
     #---------------------------------------------------------------------
     # Laptop: Samsung NP530U4B i5-2467M ATI Radeon HD 7550M

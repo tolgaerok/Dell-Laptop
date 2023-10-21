@@ -27,6 +27,7 @@
     ../../../core/system-tweaks/zram/zram-16GB-SYSTEM.nix         # Zram tweak for 16GB
     ../../../core/system-tweaks/kernel-tweaks/16GB-SYSTEM.nix     # Kernel tweak for 16GB
 
+<<<<<<< HEAD:machines/LAPTOPS/Dell-Latitude-E6540/Dell-E6540-configuration.nix
     # Main Core
     #---------------------------------------------
     ../../../core
@@ -35,6 +36,17 @@
     ../../../core/user
     ./Dell-E6540-hardware-configuration.nix 
 
+=======
+    # Main core
+    ../../core
+    ../../core/gpu/intel/HD-INTEL.nix
+
+    # Users
+    ../../core/user
+    
+    # Hardware configuration
+    ./Dell-E6540-hardware-configuration.nix  
+>>>>>>> 73c17c762d1117aff4a552cf81b52ab00feffe1f:machines/Dell-Latitude-E6540/Dell-E6540-configuration.nix
     
   ];
 

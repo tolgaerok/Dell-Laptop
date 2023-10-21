@@ -46,7 +46,10 @@
   boot.kernelParams = [
 
     "mitigations=off"
+<<<<<<< HEAD:machines/LAPTOPS/Dell-Latitude-E6540/Dell-E6540-hardware-configuration.nix
  #   "quiet"
+=======
+>>>>>>> 73c17c762d1117aff4a552cf81b52ab00feffe1f:machines/Dell-Latitude-E6540/Dell-E6540-hardware-configuration.nix
     "intel_pstate=ondemand"
 
   ];
