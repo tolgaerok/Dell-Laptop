@@ -25,7 +25,7 @@
     ./firewall
     ./fonts
     ./network
-
+    ./unfree-insecure.nix
   ];
 
 }
