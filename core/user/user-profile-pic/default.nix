@@ -1,15 +1,16 @@
-{ config, pkgs, stdenv, lib, ... }: {
-  
+{ ... }:
 
-  # -------------------------------------------------------
-  # Create custom user profile picture 
-  # -------------------------------------------------------
+{
+  #---------------------------------------------------------------------  
+  # User-home-settings
+  #---------------------------------------------------------------------
 
-  system.activationScripts.setGnomeProfilePicture = ''
-    mkdir -p /var/lib/AccountsService/icons
-    if [[ ! -h /var/lib/AccountsService/icons/tolga ]]; then
-      cp /etc/nixos/SETUP/profile-pics/cool-tolga-2.png /var/lib/AccountsService/icons/tolga
-      cp /etc/nixos/SETUP/profile-pics/smile.jpg /var/lib/AccountsService/icons/SOS
-    fi
-  '';
+  imports = [
+    
+    ./create-user-home-directories.nix  # 1st
+    ./create-user-profile-pics.nix      # 2nd
+
+  ];
+
 }
+
