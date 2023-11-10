@@ -192,15 +192,42 @@
      };
       
   # minidlna service
+  # DLNA service: Check if working. Open browser: http://192.168.0.13:8200/
+  # Add: ports 8200 to firewall
+  # Cache location: /var/cache/minidlna/  sometimes deleting it clears it
+  # -------------------------------------------------------------------------
   services.minidlna.enable = true;
   services.minidlna.announceInterval = 60;
   services.minidlna.friendlyName = "Rorqual";
   services.minidlna.mediaDirs = ["A,/home/public/Musique/" "V,/home/public/Videos/"];
+    # "A" for audio    (eg. media_dir=A,/var/lib/minidlna/music)
+    # "P" for pictures (eg. media_dir=P,/var/lib/minidlna/pictures)
+    # "V" for video    (eg. media_dir=V,/var/lib/minidlna/videos)
+    # "PV" for pictures and video (eg. media_dir=PV,/var/lib/minidlna/digital_camera)
+    # "APV" for everything (eg. "APV,/mnt/DLNA/" ) set APV to filter/show all
+
+  services.minidlna.settings = {    
+    inotify = "yes";
+    log_level = "error";
+    announceInterval = 1;
+  };
+
+  # minidlna firewall ports
+  networking.firewall = {
+    enable = false;
+    allowedTCPPorts = [ 8200 ];
+    allowedUDPPorts = [ 8200 ];
+  };
       
   # trick to create a directory with proper ownership
   # note that tmpfiles are not necesserarly temporary if you don't
   # set an expire time. Trick given on irc by someone I forgot the name..
-  systemd.tmpfiles.rules = [ "d /home/public 0755 share users" ];
+  systemd.tmpfiles.rules = [ 
+    "d /home/public 0755 share users" 
+    "D! /tmp 1777 root root 0"
+    "d /var/spool/samba 1777 root root -"
+    "r! /tmp/**/*"
+ ];
       
   # create my user, with sudo right and my public ssh key
   users.users.solene = {
